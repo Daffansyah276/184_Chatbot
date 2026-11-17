@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8fc">
+    <meta name="description" content="Teman AI untuk membantu ide, pekerjaan, dan belajar.">
+    <title>Ruang AI — Teman berpikir Anda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" id="sidebar" aria-label="Navigasi percakapan">
+        <div class="sidebar-top">
+          <a class="brand" href="/" aria-label="Ruang AI, beranda">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 3.5 19 12l8.5 3-8.5 3-3 8.5-3-8.5-8.5-3 8.5-3L16 3.5Z" fill="currentColor"/><path d="m25.5 3 .9 2.6L29 6.5l-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6Z" fill="currentColor"/></svg>
+            </span>
+            <span>ruang<span class="brand-accent">ai</span></span>
+          </a>
+          <button class="icon-button sidebar-close" id="closeSidebar" type="button" aria-label="Tutup menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+
+        <button class="new-chat-button" id="newChatButton" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          <span>Percakapan baru</span>
+          <span class="shortcut">⌘ K</span>
+        </button>
+
+        <div class="history-section">
+          <div class="section-label">TERAKHIR</div>
+          <nav class="history-list" id="historyList" aria-label="Riwayat percakapan"></nav>
+          <p class="history-empty" id="historyEmpty">Percakapan Anda akan muncul di sini.</p>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="plan-card">
+            <span class="plan-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m12 3 2.1 5.9L20 11l-5.9 2.1L12 19l-2.1-5.9L4 11l5.9-2.1L12 3Z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z"/></svg>
+            </span>
+            <div>
+              <strong>Ruang untuk ide besar</strong>
+              <span>AI siap menemani harimu</span>
+            </div>
+          </div>
+          <div class="profile">
+            <span class="avatar user-avatar">A</span>
+            <span class="profile-name">Pengguna</span>
+            <button class="icon-button profile-menu" type="button" aria-label="Menu profil">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button menu-toggle" id="openSidebar" type="button" aria-label="Buka menu">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <span class="topbar-title">Asisten AI</span>
+            <span class="topbar-divider"></span>
+            <span class="model-label"><span class="status-dot"></span>Ruang AI</span>
+          </div>
+          <button class="share-button" id="shareButton" type="button" title="Bagikan halaman">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>
+            <span>Bagikan</span>
+          </button>
+        </header>
+
+        <section class="chat-area" aria-label="Percakapan">
+          <div class="welcome-view" id="welcomeView">
+            <div class="welcome-content">
+              <div class="welcome-orb" aria-hidden="true">
+                <span class="orb-core"></span>
+                <span class="orb-sparkle sparkle-one">✦</span>
+                <span class="orb-sparkle sparkle-two">✧</span>
+              </div>
+              <p class="eyebrow"><span class="eyebrow-line"></span>ASISTEN AI PRIBADI<span class="eyebrow-line"></span></p>
+              <h1>Ada yang bisa<br>aku <span>bantu hari ini?</span></h1>
+              <p class="welcome-description">Tanyakan apa saja, temukan ide baru, atau mulai dari salah satu saran di bawah.</p>
+
+              <div class="suggestion-grid" aria-label="Contoh pertanyaan">
+                <button class="suggestion-card" type="button" data-prompt="Bantu aku menyusun rencana belajar yang konsisten">
+                  <span class="suggestion-icon icon-violet">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20M8 7h8M8 10h6"/></svg>
+                  </span>
+                  <span class="suggestion-copy"><strong>Belajar lebih terarah</strong><span>Buat rencana belajar yang konsisten</span></span>
+                  <svg class="suggestion-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </button>
+                <button class="suggestion-card" type="button" data-prompt="Beri aku ide kreatif untuk proyek baru">
+                  <span class="suggestion-icon icon-peach">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6m-5 3h4m-2-19a7 7 0 0 0-4 12.7c.5.4 1 1 1 1.8h6c0-.8.5-1.4 1-1.8A7 7 0 0 0 12 2Z"/></svg>
+                  </span>
+                  <span class="suggestion-copy"><strong>Temukan ide baru</strong><span>Mulai proyek dengan inspirasi segar</span></span>
+                  <svg class="suggestion-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </button>
+                <button class="suggestion-card" type="button" data-prompt="Jelaskan konsep yang rumit dengan cara yang sederhana">
+                  <span class="suggestion-icon icon-blue">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 1 1 4.7 1.2c-.8 1.1-2.3 1.3-2.3 3M12 17.5v.1"/></svg>
+                  </span>
+                  <span class="suggestion-copy"><strong>Pahami hal baru</strong><span>Jelaskan topik rumit dengan sederhana</span></span>
+                  <svg class="suggestion-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </button>
+                <button class="suggestion-card" type="button" data-prompt="Bantu aku menulis pesan yang lebih jelas dan menarik">
+                  <span class="suggestion-icon icon-mint">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H8l-4 4V5Z"/><path d="M8 9h8M8 13h5"/></svg>
+                  </span>
+                  <span class="suggestion-copy"><strong>Rangkai kata-kata</strong><span>Tulis pesan dengan lebih percaya diri</span></span>
+                  <svg class="suggestion-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="conversation-view" id="conversationView" hidden>
+            <div class="messages" id="messages" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <footer class="composer-area">
+          <form class="composer" id="chatForm">
+            <label class="sr-only" for="messageInput">Tulis pesan untuk asisten AI</label>
+            <textarea id="messageInput" name="message" rows="1" placeholder="Tulis pesan..." maxlength="4000" required></textarea>
+            <div class="composer-toolbar">
+              <div class="composer-hint"><span class="hint-sparkle">✦</span><span>AI bisa membuat kesalahan. Periksa kembali informasi penting.</span></div>
+              <div class="composer-actions">
+                <span class="character-count" id="characterCount">0 / 4000</span>
+                <button class="send-button" id="sendButton" type="submit" aria-label="Kirim pesan" disabled>
+                  <svg class="send-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14-7-5 14-2.5-6.5L5 12Z"/><path d="m11.5 12.5 3.5-3.5"/></svg>
+                  <svg class="stop-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="footer-note">Dibuat dengan <span aria-label="hati">♥</span> untuk menemani harimu</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
